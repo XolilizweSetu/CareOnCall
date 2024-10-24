@@ -1,142 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  CareonCall Carwash </title>
+    <title>CareonCall Carwash</title>
     <link rel="stylesheet" href="services.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="carwash.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        .blur {
+            filter: blur(5px);
+            transition: filter 0.3s;
+        }
+    </style>
 </head>
 <body>
 
-    <!---------------------------------------------------------------------NAVIGATION BAR------------------------------------------------------------------------------------------------------------>
     <div>
         <ul class="navigationbar">
             <h2><a href="index.html" class="homelink">Care<span>OnCall</span></a></h2>
             <li><a href="login.html" class="logout">Logout</a></li>
-            <li><a href="index.html#getservices">Services</a></li>
             <li><a href="index.html">Home</a></li>
-            
-
-  
         </ul>
 
         <div class="carwash">
-            <h1>CAR WASH</h1>
-
+            <h1>Car Wash</h1>
         </div>
 
-
         <div class="services">
-            
             <div class="our-services">
-                <img src="img/view-cool-motorcycle.avif" atl="Request" class="gallery" style="width:100%;">
+                <a href="#" class="car-option" data-price="80">
+                    <img src="img/view-cool-motorcycle.avif" alt="Motorbike" class="gallery" style="width:100%;" height="150">
+                </a>
                 <div class="home-container">
-                    <h3>Motorbike - R80.00</h3>
+                    <h3>Motorbike - R80</h3>
                 </div>
-             </div>
-             <div class="our-services">
-                <img src="img/3d-car.avif" atl="deliverman" class="gallery" style="width:100%;" height="150">
+            </div>
+            <div class="our-services">
+                <a href="#" class="car-option" data-price="100">
+                    <img src="img/3d-car.avif" alt="Sedan" class="gallery" style="width:100%;" height="150">
+                </a>
                 <div class="home-container">
-                    <h3>Sedan - R100.00</h3>
+                    <h3>Sedan - R100</h3>
                 </div>
-             </div>
-             <div class="our-services">
-                <img src="img/view-3d-car.avif" atl="convenient" class="gallery" style="width:100%;">
+            </div>
+            <div class="our-services">
+                <a href="#" class="car-option" data-price="180">
+                    <img src="img/view-3d-car.avif" alt="SUV" class="gallery" style="width:100%;" height="150">
+                </a>
                 <div class="home-container">
-                    <h3>SUV - R180.00</h3>
+                    <h3>SUV - R180</h3>
                 </div>
-             </div>
-             <div class="our-services">
-                <img src="img/Mercedes-Benz-V-Class-Black-Crystal-Larte.webp" atl="5startserives" class="gallery" style="width:100%;">
+            </div>
+            <div class="our-services">
+                <a href="#" class="car-option" data-price="220">
+                    <img src="img/Mercedes-Benz-V-Class-Black-Crystal-Larte.webp" alt="Minibus" class="gallery" style="width:100%;" height="150">
+                </a>
                 <div class="home-container">
-                    <h3>Minibus - R220.00</h3>
+                    <h3>Minibus - R220</h3>
                 </div>
-             </div>
+            </div>
+        </div>
+
+        <table class="carwash-table">
+            <tr>
+                <th>CART <hr><br></th>
+            </tr>
+            <tr>
+                <td>Motorbike</td>
+                <td>
+                    <select id="motorbike">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Sedan</td>
+                <td>
+                    <select id="sedan">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>SUV</td>
+                <td>
+                    <select id="suv">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Minibus</td>
+                <td>
+                    <select id="minibus">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <table class="total-table">
+            <tr>
+                <th><hr>TOTAL<hr></th>
+                <th><label id="totalPrice">R 0.00</label></th>
+            </tr>
+        </table>
+
+        <div class="checkout">
+            <a href="payment.html" class="button">Checkout</a>
+        </div>
     </div>
-<form class="myform">
-    <table class="carwash-table">
-        <th>CART <hr><br></th>
-        
-        <tr>
-            <th>Motorbike </th>
-            <th>
-                       
-            <select class="price" onchange="calcTotal()" id="bike"> 
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
 
-        <tr>
-            <th>Sedan</th>
-            <th>
-            <select class="price" onchange="calcTotal()" id="sedan" >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
+    <script>
+        // Function to update the total price based on selected quantities
+        function updateTotalPrice() {
+            const motorbikeCount = parseInt(document.getElementById('motorbike').value);
+            const sedanCount = parseInt(document.getElementById('sedan').value);
+            const suvCount = parseInt(document.getElementById('suv').value);
+            const minibusCount = parseInt(document.getElementById('minibus').value);
 
-        <tr>
-            <th>SUV</th>
-            <th>
-            <select class="price" onchange="calcTotal()" id="suv">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
+            // Prices for each car type
+            const motorbikePrice = 80; // Price for motorbike
+            const sedanPrice = 100;    // Price for sedan
+            const suvPrice = 180;      // Price for SUV
+            const minibusPrice = 220;  // Price for minibus
 
+            // Calculate total based on selected quantities
+            let total = (motorbikeCount * motorbikePrice) +
+                        (sedanCount * sedanPrice) +
+                        (suvCount * suvPrice) +
+                        (minibusCount * minibusPrice);
 
-        <tr>
-            <th>Minibus</th>
-            <th>
-            <select class="price" onchange="calcTotal()" id="minibus">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
-    </table>
+            // Display the total price
+            document.getElementById('totalPrice').textContent = 'R ' + total.toFixed(2);
+        }
 
-    <table class="total-table">
-        <tr>
-            <th><hr>TOTAL<hr></th>
-            <th>
-                <label>R</label>
-                <label id="totalCalc"  class="totalCalc">0</label>
-                <label id="totalCalc"  class="totalCalc">.00</label>
+        // Event listeners for car option clicks
+        const carOptions = document.querySelectorAll('.car-option');
+        carOptions.forEach(option => {
+            option.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor behavior
 
-            </th>
-        </tr>
-    </table>
+                // Blur all images
+                carOptions.forEach(opt => {
+                    opt.querySelector('img').classList.remove('blur');
+                });
 
-    
-    <div class="checkout">
-        <a href="payment.html" class="button">Checkout</a>
-    </div>
-    </div>
-</form>
+                // Blur the selected image
+                this.querySelector('img').classList.add('blur');
+                
+                // Update total price immediately when selecting a car type
+                updateTotalPrice();
+            });
+        });
+
+        // Event listeners for quantity selection
+        document.getElementById('motorbike').addEventListener('change', updateTotalPrice);
+        document.getElementById('sedan').addEventListener('change', updateTotalPrice);
+        document.getElementById('suv').addEventListener('change', updateTotalPrice);
+        document.getElementById('minibus').addEventListener('change', updateTotalPrice);
+    </script>
 
 </body>
 </html>
