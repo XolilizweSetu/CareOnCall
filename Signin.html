@@ -30,5 +30,28 @@
 
             </form>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const loginAction = document.getElementById('login-action');
+       
+                function updateLoginLink() {
+                    if (localStorage.getItem('loggedIn')) {
+                        loginAction.innerText = 'Logout';
+                        loginAction.onclick = logout;
+                    } else {
+                        loginAction.innerText = 'Login';
+                        loginAction.onclick = () => window.location.href = 'login.html'; // Redirect to login page
+                    }
+                }
+       
+                function logout() {
+                    localStorage.removeItem('loggedIn');
+                    updateLoginLink();
+                    window.location.reload(); // Reload to reset the page
+                }
+       
+                updateLoginLink(); // Initial call to set the link correctly
+            });
+        </script>
     </body>
     </html>
