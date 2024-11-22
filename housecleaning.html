@@ -4,132 +4,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  CareonCall Carwash </title>
+    <title>CareonCall Housekeeping</title>
     <link rel="stylesheet" href="services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .blurred {
+            filter: blur(5px);
+        }
+    </style>
 </head>
+
 <body>
 
-    <!---------------------------------------------------------------------NAVIGATION BAR------------------------------------------------------------------------------------------------------------>
-
-
+    <!-- Navigation Bar -->
     <div>
         <ul class="navigationbar">
             <h2><a href="index.html" class="homelink">Care<span>OnCall</span></a></h2>
             <li><a href="login.html" class="logout">Logout</a></li>
             <li><a href="index.html#getservices">Services</a></li>
             <li><a href="index.html">Home</a></li>
-  
         </ul>
 
         <div class="carwash">
             <h1>HOUSEKEEPING</h1>
-
         </div>
 
-
         <div class="services">
-            <div class="our-services">
-                <img src="img/bachelor.jfif" atl="Request" class="gallery" style="width:100%;">
+            <div class="our-services" id="bachelorService" onclick="selectHouse('bachelorService', 'R500')">
+                <img src="img/bachelor.jfif" alt="Bachelor House" class="gallery" style="width:100%;">
                 <div class="home-container">
                     <h3>Bachelor - R500</h3>
                 </div>
-             </div>
-             <div class="our-services">
-                <img src="img/standhouse.jfif" atl="deliverman" class="gallery" style="width:100%;" height="150">
+            </div>
+            <div class="our-services" id="standardHouseService" onclick="selectHouse('standardHouseService', 'R700')">
+                <img src="img/standhouse.jfif" alt="Standard House" class="gallery" style="width:100%;" height="150">
                 <div class="home-container">
-                    <h3>Standardhouse - R700</h3>
+                    <h3>Standard House - R700</h3>
                 </div>
-             </div>
-             <div class="our-services">
-                <img src="img/penthouse.jfif" atl="convenient" class="gallery" style="width:100%;">
+            </div>
+            <div class="our-services" id="penthouseService" onclick="selectHouse('penthouseService', 'R1500')">
+                <img src="img/penthouse.jfif" alt="Penthouse" class="gallery" style="width:100%;">
                 <div class="home-container">
-                    <h3>Penthouse - 1500</h3>
+                    <h3>Penthouse - R1500</h3>
                 </div>
-             </div>
-             <div class="our-services">
-                <img src="img/mansion.jfif" atl="5startserives" class="gallery" style="width:100%;">
+            </div>
+            <div class="our-services" id="mansionService" onclick="selectHouse('mansionService', 'R2000')">
+                <img src="img/mansion.jfif" alt="Mansion" class="gallery" style="width:100%;">
                 <div class="home-container">
                     <h3>Mansion - R2000</h3>
                 </div>
-             </div>
+            </div>
+        </div>
+
+        <form class="myform">
+            <table class="carwash-table">
+                <th>CART <hr><br></th>
+
+                <tr>
+                    <th>Bedrooms </th>
+                    <th>
+                        <select id="bedrooms" onchange="calcTotal()">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Bathrooms</th>
+                    <th>
+                        <select id="bathrooms" onchange="calcTotal()">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Kitchen</th>
+                    <th>
+                        <select id="kitchen" onchange="calcTotal()">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Balcony</th>
+                    <th>
+                        <select id="balcony" onchange="calcTotal()">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </th>
+                </tr>
+            </table>
+
+            <table class="total-table">
+                <tr>
+                    <th><hr>TOTAL<hr></th>
+                    <th>
+                        <label>R</label>
+                        <label id="totalCalc">0</label>
+                    </th>
+                </tr>
+            </table>
+
+            <div class="checkout">
+                <a href="payment.html" class="button">Checkout</a>
+            </div>
+        </form>
     </div>
-    </div>
-    <table class="carwash-table">
-        <th>CART <hr><br></th>
-        
-        <tr>
-            <th>Bedrooms </th>
-            <th>
-                       
-            <select>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
 
-        <tr>
-            <th>Bathrooms</th>
-            <th>
-            <select>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
+    <!-- JavaScript for Calculation and Blur Effect -->
+    <script>
+        let selectedHousePrice = 0;
 
-        <tr>
-            <th>Kitchen</th>
-            <th>
-            <select>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
+        // Function to handle the selection of a house
+        function selectHouse(houseId, price) {
+            // Remove blur from all houses
+            const allHouses = document.querySelectorAll('.our-services img');
+            allHouses.forEach(house => house.classList.remove('blurred'));
 
+            // Blur the selected house
+            const selectedHouse = document.getElementById(houseId).querySelector('img');
+            selectedHouse.classList.add('blurred');
 
-        <tr>
-            <th>Balcony</th>
-            <th>
-            <select>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </th>
-            </select>
-        </tr>
-    </table>
+            // Set the selected house price
+            selectedHousePrice = parseInt(price.replace('R', '').trim());
+            calcTotal(); // Update the total whenever a house is selected
+        }
 
-    <table class="total-table">
-        <tr>
-            <th><hr>TOTAL<hr></th>
-            <th>
-                <label><hr>R 0.00<hr></label>
-            </th>
-        </tr>
-    </table>
+        function calcTotal() {
+            // Get values from the select dropdowns
+            const bedrooms = parseInt(document.getElementById('bedrooms').value);
+            const bathrooms = parseInt(document.getElementById('bathrooms').value);
+            const kitchen = parseInt(document.getElementById('kitchen').value);
+            const balcony = parseInt(document.getElementById('balcony').value);
 
-    
-    <div class="checkout">
-        <a href="payment.html" class="button">Checkout</a>
-    </div>
-    </div>
+            // Calculate the total: Selected House Price + room type costs (simplified)
+            const total = selectedHousePrice + (bedrooms * 100) + (bathrooms * 80) + (kitchen * 100) + (balcony * 50);
+
+            // Update the total on the page
+            document.getElementById('totalCalc').innerText = total.toFixed(2);
+        }
+    </script>
+
 </body>
+
 </html>
